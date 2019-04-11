@@ -14,10 +14,10 @@ library_names='libgatha.so.0.0.0 libgatha.so.0 libgatha.so'
 old_library='libgatha.a'
 
 # Linker flags that can not go in dependency_libs.
-inherited_linker_flags=' -pthread'
+inherited_linker_flags=''
 
 # Libraries that this one depends upon.
-dependency_libs=' /usr/lib/libcairo.la -L/usr/lib/i386-linux-gnu /usr/lib/i386-linux-gnu/libglib-2.0.la -lm'
+dependency_libs=' -lcairo -lglib-2.0 -lm'
 
 # Names of additional weak libraries provided by this library
 weak_library_names=''

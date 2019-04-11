@@ -32,7 +32,7 @@ DUALCASE=1; export DUALCASE # for MKS sh
 # if CDPATH is set.
 (unset CDPATH) >/dev/null 2>&1 && unset CDPATH
 
-relink_command="(cd /home/yusei/these/libgatha-0.2.0/examples; { test -z \"\${LIBRARY_PATH+set}\" || unset LIBRARY_PATH || { LIBRARY_PATH=; export LIBRARY_PATH; }; }; { test -z \"\${COMPILER_PATH+set}\" || unset COMPILER_PATH || { COMPILER_PATH=; export COMPILER_PATH; }; }; { test -z \"\${GCC_EXEC_PREFIX+set}\" || unset GCC_EXEC_PREFIX || { GCC_EXEC_PREFIX=; export GCC_EXEC_PREFIX; }; }; { test -z \"\${LD_RUN_PATH+set}\" || unset LD_RUN_PATH || { LD_RUN_PATH=; export LD_RUN_PATH; }; }; { test -z \"\${LD_LIBRARY_PATH+set}\" || unset LD_LIBRARY_PATH || { LD_LIBRARY_PATH=; export LD_LIBRARY_PATH; }; }; PATH=/home/yusei/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/yusei/android-sdk-linux_86/tools:/home/yusei/android-sdk-linux_86/platform-tools:/home/yusei/.rvm/bin:/home/yusei/these/outils/RNAVIEW/bin; export PATH; gcc -I ../lib/ -pthread -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng12 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -g -O2 -fopenmp -o \$progdir/\$file sastry.o  ../lib/.libs/libgatha.so /usr/lib/libcairo.so -L/usr/lib/i386-linux-gnu /usr/lib/i386-linux-gnu/libglib-2.0.so -lm -pthread -Wl,-rpath -Wl,/home/yusei/these/libgatha-0.2.0/lib/.libs)"
+relink_command=""
 
 # This environment variable determines our operation mode.
 if test "$libtool_install_magic" = "%%%MAGIC variable%%%"; then
@@ -98,38 +98,20 @@ else
   absdir=`cd "$thisdir" && pwd`
   test -n "$absdir" && thisdir="$absdir"
 
-  program=lt-'sastry'
+  program='sastry'
   progdir="$thisdir/.libs"
 
-  if test ! -f "$progdir/$program" ||
-     { file=`ls -1dt "$progdir/$program" "$progdir/../$program" 2>/dev/null | /bin/sed 1q`; \
-       test "X$file" != "X$progdir/$program"; }; then
-
-    file="$$-$program"
-
-    if test ! -d "$progdir"; then
-      mkdir "$progdir"
-    else
-      rm -f "$progdir/$file"
-    fi
-
-    # relink executable if necessary
-    if test -n "$relink_command"; then
-      if relink_command_output=`eval $relink_command 2>&1`; then :
-      else
-	echo "$relink_command_output" >&2
-	rm -f "$progdir/$file"
-	exit 1
-      fi
-    fi
-
-    mv -f "$progdir/$file" "$progdir/$program" 2>/dev/null ||
-    { rm -f "$progdir/$program";
-      mv -f "$progdir/$file" "$progdir/$program"; }
-    rm -f "$progdir/$file"
-  fi
 
   if test -f "$progdir/$program"; then
+    # Add our own library path to LD_LIBRARY_PATH
+    LD_LIBRARY_PATH="/home/yusei/tmp/libgatha/lib/.libs:$LD_LIBRARY_PATH"
+
+    # Some systems cannot cope with colon-terminated LD_LIBRARY_PATH
+    # The second colon is a workaround for a bug in BeOS R4 sed
+    LD_LIBRARY_PATH=`$ECHO "X$LD_LIBRARY_PATH" | $Xsed -e 's/::*$//'`
+
+    export LD_LIBRARY_PATH
+
     if test "$libtool_execute_magic" != "%%%MAGIC variable%%%"; then
       # Run the actual program with our arguments.
 
