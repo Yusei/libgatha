@@ -1,0 +1,23 @@
+Source: libgatha
+Priority: extra
+Maintainer: Alexis Lamiable <alexis@lamiable.fr>
+Build-Depends: debhelper (>= 7.0.50~), autotools-dev
+Standards-Version: 3.8.4
+Section: libs
+Homepage: <insert the upstream URL, if relevant>
+#Vcs-Git: git://git.debian.org/collab-maint/libgatha.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/libgatha.git;a=summary
+
+Package: libgatha-dev
+Section: libdevel
+Architecture: any
+Depends: libgatha0 (= ${binary:Version})
+Description: Game theory algorithms library.
+ <insert long description, indented with spaces>
+
+Package: libgatha0
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Game theory algorithms library.
+ <insert long description, indented with spaces>

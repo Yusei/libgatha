@@ -1,0 +1,10 @@
+4887a0f4a78f59afe66396de4e755274  usr/include/gatha/game.h
+b51e1310ec79256968f561dd9dda050a  usr/include/gatha/gatha.h
+fbc9017e77b38f6dcd25eaf6b51d1300  usr/include/gatha/mcb.h
+e810492e705f790509f813d9d2e4459f  usr/include/gatha/sastry.h
+3e0d0cf02e5137b3fe6f036b006f46ff  usr/include/gatha/types.h
+c11942ab90ce74238c108b0ff334c62d  usr/lib/libgatha.a
+54efef6c71d5933162053644f9e862b3  usr/lib/libgatha.la
+1919fb2884a41d8c118ec9969b68feea  usr/share/doc/libgatha-dev/README.Debian
+056d607dd377ff86e96198b474e49652  usr/share/doc/libgatha-dev/changelog.Debian.gz
+ee27a9ad40341a91c6426d8f4505248f  usr/share/doc/libgatha-dev/copyright

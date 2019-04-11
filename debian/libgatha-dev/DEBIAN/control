@@ -1,0 +1,12 @@
+Package: libgatha-dev
+Source: libgatha
+Version: 0.1.0-1
+Architecture: i386
+Maintainer: Alexis Lamiable <alexis@lamiable.fr>
+Installed-Size: 188
+Depends: libgatha0 (= 0.1.0-1)
+Section: libdevel
+Priority: extra
+Homepage: <insert the upstream URL, if relevant>
+Description: Game theory algorithms library.
+ <insert long description, indented with spaces>

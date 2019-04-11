@@ -1,0 +1,4 @@
+[MULTITHREAD]
+ - mcb and sfp algorithms have a max_thread attribute but
+   it is used only for memory allocation, and it is never
+   ensured that OpenMP doesn't create more threads.
