@@ -12,6 +12,7 @@ Results and algorithm progression can be visualized through SVG files.
 # Examples
 See example folders for basic examples.
 
+```sh
 ./configure
 make
 ./examples/sastry examples/games/battle_of_sexes 
@@ -21,3 +22,4 @@ make
 last iteration: 65
 0.999 0.001 
 1.000 0.000 
+```
